@@ -1,54 +1,70 @@
-# 🍔 Food App Backend API
+# 🍔 Food Delivery Backend API
 
-A scalable and modular backend system for a food delivery application. Built using **Node.js, Express, MongoDB**, and follows production-level backend practices.
+A **production-ready backend system** for a food delivery application built with **Node.js, Express, and MongoDB**.
+Implements authentication, role-based access, and a complete order management workflow.
 
 ---
 
-## 🚀 Features
+## 📌 Features
 
 ### 🔐 Authentication & Authorization
 
 * JWT-based authentication
-* Role-based access (User / Admin)
-* Secure password hashing (bcrypt)
+* Role-based access control (User / Admin)
+* Secure password hashing using bcrypt
 
-### 👤 User Management
+---
 
-* Register & Login
+### 👤 User Module
+
+* Register / Login
 * Get user profile
 * Update profile
-* Update & Reset password
+* Change password
+* Reset password
 
-### 🏪 Restaurant Management
+---
+
+### 🏪 Restaurant Module
 
 * Create restaurant (Admin)
 * Get all restaurants
 * Get restaurant by ID
-* Delete restaurant
 
-### 🗂 Category Management
+---
+
+### 🍕 Food Module
+
+* Add food item
+* Get all foods
+* Get food by ID
+* Update & delete food
+
+---
+
+### 🗂 Category Module
 
 * Create category
 * Get all categories
 * Update category
 * Delete category
 
-### 🍕 Food Management
+---
 
-* Create food item
-* Get all foods
-* Get single food
-* Update food
-* Delete food
-* Get foods by restaurant
+### 🛒 Order Module
 
-### 🛒 Order Management
-
-* Place order (User)
+* Place order
+* Calculate total price
+* Store food references
 * Update order status (Admin)
-* Order workflow:
 
-  * preparing → prepared → on the way → delivered
+---
+
+## 🔄 Order Workflow
+
+```
+preparing → prepared → on the way → delivered
+```
 
 ---
 
@@ -58,7 +74,7 @@ A scalable and modular backend system for a food delivery application. Built usi
 * **Database:** MongoDB, Mongoose
 * **Authentication:** JWT
 * **Security:** bcryptjs
-* **Tools:** Postman, Nodemon
+* **API Testing:** Postman
 
 ---
 
@@ -77,19 +93,22 @@ backend/
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation & Setup
 
-```bash
-git clone https://github.com/your-username/food-app-backend.git
-cd food-app-backend
+### 1. Clone Repository
+
+```
+git clone https://github.com/kranthikumar-dev/food-app-backend.git
+cd food-app-backend/backend
+```
+
+### 2. Install Dependencies
+
+```
 npm install
 ```
 
----
-
-## 🔑 Environment Variables
-
-Create `.env` file:
+### 3. Create .env file
 
 ```
 PORT=8080
@@ -97,11 +116,9 @@ MONGO_URL=your_mongodb_url
 JWT_SECRET=your_secret_key
 ```
 
----
+### 4. Run Server
 
-## ▶️ Run Server
-
-```bash
+```
 npm run dev
 ```
 
@@ -115,7 +132,9 @@ http://localhost:8080/api/v1
 
 ---
 
-## 🔒 Authorization Header
+## 🔒 Authorization
+
+All protected routes require:
 
 ```
 Authorization: Bearer <token>
@@ -123,23 +142,67 @@ Authorization: Bearer <token>
 
 ---
 
-## 🧪 API Testing
+## 📌 Sample API Endpoints
 
-Use **Postman** to test all endpoints.
+### Auth
+
+```
+POST /auth/register
+POST /auth/login
+```
+
+### User
+
+```
+GET /user/getUser
+PUT /user/updateUser
+POST /user/updatePassword
+```
+
+### Orders
+
+```
+POST /order/placeorder
+PUT /order/orderStatus/:id
+```
 
 ---
 
-## 📈 Future Improvements
+## 🧪 Example Request (Place Order)
 
-* Payment integration (Stripe)
-* Order tracking (real-time)
-* Reviews & ratings
-* Admin dashboard
-* Redis caching
+```
+POST /api/v1/order/placeorder
+```
+
+```json
+{
+  "cart": [
+    {
+      "_id": "food_id_here",
+      "price": 150
+    }
+  ]
+}
+```
+
+---
+
+## ⚠️ Known Improvements (Next Steps)
+
+* Add payment integration (Stripe)
+* Add order history APIs
+* Add Redis caching
+* Deploy to cloud (Render)
 
 ---
 
 ## 👨‍💻 Author
 
-Kranthi Kumar
+**Kranthi Kumar**
 Backend Developer (Node.js)
+
+---
+
+## ⭐ Show your support
+
+If you like this project, give it a ⭐ on GitHub!
