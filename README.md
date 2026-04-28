@@ -5,6 +5,13 @@ Implements authentication, role-based access, and a complete order management wo
 
 ---
 
+## 🚀 Status
+
+* ✅ Backend: Running locally
+* 🚧 Deployment: In progress
+
+---
+
 ## 📌 Features
 
 ### 🔐 Authentication & Authorization
@@ -62,7 +69,7 @@ Implements authentication, role-based access, and a complete order management wo
 
 ## 🔄 Order Workflow
 
-```
+```text
 preparing → prepared → on the way → delivered
 ```
 
@@ -80,7 +87,7 @@ preparing → prepared → on the way → delivered
 
 ## 📂 Project Structure
 
-```
+```bash
 backend/
 │
 ├── controllers/
@@ -97,20 +104,20 @@ backend/
 
 ### 1. Clone Repository
 
-```
+```bash
 git clone https://github.com/kranthikumar-dev/food-app-backend.git
 cd food-app-backend/backend
 ```
 
 ### 2. Install Dependencies
 
-```
+```bash
 npm install
 ```
 
-### 3. Create .env file
+### 3. Create `.env` file
 
-```
+```env
 PORT=8080
 MONGO_URL=your_mongodb_url
 JWT_SECRET=your_secret_key
@@ -118,7 +125,7 @@ JWT_SECRET=your_secret_key
 
 ### 4. Run Server
 
-```
+```bash
 npm run dev
 ```
 
@@ -126,7 +133,7 @@ npm run dev
 
 ## 📡 API Base URL
 
-```
+```bash
 http://localhost:8080/api/v1
 ```
 
@@ -136,7 +143,7 @@ http://localhost:8080/api/v1
 
 All protected routes require:
 
-```
+```bash
 Authorization: Bearer <token>
 ```
 
@@ -146,14 +153,14 @@ Authorization: Bearer <token>
 
 ### Auth
 
-```
+```bash
 POST /auth/register
 POST /auth/login
 ```
 
 ### User
 
-```
+```bash
 GET /user/getUser
 PUT /user/updateUser
 POST /user/updatePassword
@@ -161,7 +168,7 @@ POST /user/updatePassword
 
 ### Orders
 
-```
+```bash
 POST /order/placeorder
 PUT /order/orderStatus/:id
 ```
@@ -170,7 +177,7 @@ PUT /order/orderStatus/:id
 
 ## 🧪 Example Request (Place Order)
 
-```
+```bash
 POST /api/v1/order/placeorder
 ```
 
@@ -187,7 +194,24 @@ POST /api/v1/order/placeorder
 
 ---
 
-## ⚠️ Known Improvements (Next Steps)
+## 🧪 Sample Response
+
+```json
+{
+  "success": true,
+  "message": "Order Placed Successfully",
+  "newOrder": {
+    "_id": "order_id",
+    "foods": ["food_id"],
+    "payment": { "total": 150 },
+    "status": "preparing"
+  }
+}
+```
+
+---
+
+## ⚠️ Future Improvements
 
 * Add payment integration (Stripe)
 * Add order history APIs
@@ -201,8 +225,10 @@ POST /api/v1/order/placeorder
 **Kranthi Kumar**
 Backend Developer (Node.js)
 
+* GitHub: https://github.com/kranthikumar-dev
+
 ---
 
-## ⭐ Show your support
+## ⭐ Support
 
-If you like this project, give it a ⭐ on GitHub!
+If you found this project useful, consider giving it a ⭐ on GitHub!
